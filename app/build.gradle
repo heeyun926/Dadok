@@ -49,4 +49,8 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation("androidx.viewpager2:viewpager2:1.0.0")
+    //Kotlin coroutines with architecture
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.0-alpha04"
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.0'
 }
