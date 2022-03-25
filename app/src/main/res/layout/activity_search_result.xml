@@ -46,7 +46,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:text="그로스해킹"
+        android:focusableInTouchMode="true"
         android:textColor="@color/black"
         android:textSize="16sp"
         android:textStyle="normal"
