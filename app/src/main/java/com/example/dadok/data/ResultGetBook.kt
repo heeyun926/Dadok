@@ -13,3 +13,4 @@ data class ResultGetBook(
     var publisher: String = ""
 //TODO - var items: List<Items> 이걸 쓰는 게 좋을까?
 )
+
