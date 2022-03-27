@@ -14,3 +14,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Dadok"
 include ':app'
+

@@ -1,4 +1,4 @@
-package com.example.dadok
+package com.example.dadok.ui
 
 import android.content.Intent
 import android.os.Bundle
