@@ -15,5 +15,10 @@ class SearchResultActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySearchResultBinding.inflate(layoutInflater)
         setContentView(R.layout.activity_search_result)
+
+        initSearchEditText()
+    }
+    private fun initSearchEditText(){
+        binding.textView4
     }
 }

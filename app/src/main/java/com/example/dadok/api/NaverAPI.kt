@@ -1,6 +1,8 @@
 package com.example.dadok.api
 
 import com.example.dadok.data.ResultGetBook
+import okhttp3.Interceptor
+import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Call
 import retrofit2.Retrofit
@@ -12,8 +14,8 @@ import retrofit2.http.Query
 interface NaverAPI {
     @GET("https://openapi.naver.com/v1/search/book.json")
     fun getBookList(
-        @Header("X-Naver-Client-Id") clientId: String,
-        @Header("X-Naver-Client-Secret") clientSecret: String,
+        //@Header("X-Naver-Client-Id") clientId: String,
+        //@Header("X-Naver-Client-Secret") clientSecret: String,
         @Query("query") query: String,
         @Query("display") display: Int? = null,
         @Query("start") start: Int? = null
@@ -29,11 +31,23 @@ interface NaverAPI {
         fun create(): NaverAPI {
 
             val httpLoggingInterceptor = HttpLoggingInterceptor()
+            httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
 
+            val headerInterceptor = Interceptor {
+                val request = it.request()
+                    .newBuilder()
+                    .addHeader("X-Naver-Client-Id", CLIENT_ID)
+                    .addHeader("X-Naver-Client-Secret", CLIENT_SECRET)
+                    .build()
+                return@Interceptor it.proceed(request)
+            }
 
+            val client = OkHttpClient.Builder()
+                .addInterceptor(headerInterceptor)
+                .addInterceptor(httpLoggingInterceptor)
+                .build()
 
-
-
+            
             return Retrofit.Builder()
                 .baseUrl(BASE_URL_NAVER_API)
                 .addConverterFactory(GsonConverterFactory.create())
