@@ -15,7 +15,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView10"
+        android:id="@+id/bookImg"
         android:layout_width="65dp"
         android:layout_height="86dp"
         android:layout_marginStart="10dp"
@@ -34,7 +34,7 @@
         android:textColor="@color/black"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/imageView10"
+        app:layout_constraintStart_toEndOf="@+id/bookImg"
         app:layout_constraintTop_toTopOf="@+id/imageView9" />
 
     <TextView
@@ -47,11 +47,11 @@
         android:textColor="@color/text_02"
         android:textSize="14sp"
         android:textStyle="normal"
-        app:layout_constraintStart_toEndOf="@+id/imageView10"
+        app:layout_constraintStart_toEndOf="@+id/bookImg"
         app:layout_constraintTop_toBottomOf="@+id/title" />
 
     <TextView
-
+        android:id="@+id/publisher"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="9dp"
@@ -60,7 +60,7 @@
         android:textColor="@color/text_01"
         android:textSize="14sp"
         android:textStyle="normal"
-        app:layout_constraintStart_toEndOf="@+id/imageView10"
+        app:layout_constraintStart_toEndOf="@+id/bookImg"
         app:layout_constraintTop_toBottomOf="@+id/author" />
 
 

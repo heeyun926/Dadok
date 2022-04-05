@@ -3,20 +3,31 @@ package com.example.dadok.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.dadok.data.Book
 import com.example.dadok.data.SearchBook
 import com.example.dadok.databinding.ItemReycyclerSearchResultBinding
 
-class BookAdapter : RecyclerView.Adapter<BookAdapter.Holder>(){
-    var searchList = mutableListOf<SearchBook>()
+class BookAdapter(private val itemCLickedListener: (Book)->Unit)
+    : ListAdapter<Book, BookAdapter.Holder>(diffUtil){
 
+    //View Binding(item_recycler_search_result
     inner class Holder(val binding: ItemReycyclerSearchResultBinding):
     RecyclerView.ViewHolder(binding.root){
         fun bind(data: Book){
             binding.title.text = data.title
             binding.author.text = data.author
-            binding.
+            binding.publisher.text = data.publisher
+
+            binding.root.setOnClickListener{
+                itemCLickedListener(data)
+            }
+            Glide
+                .with(binding.bookImg.context)
+                .load(data.coverSmallUrl)
+                .into(binding.bookImg)
         }
     }
 
@@ -26,7 +37,7 @@ class BookAdapter : RecyclerView.Adapter<BookAdapter.Holder>(){
     }
 
     override fun onBindViewHolder(holder: BookAdapter.Holder, position: Int) {
-        val searchData = searchList[position]
+        holder.bind(currentList[position])
 
     }
     //DiffUtil 알아보기
@@ -42,6 +53,4 @@ class BookAdapter : RecyclerView.Adapter<BookAdapter.Holder>(){
             }
         }
     }
-
-    override fun getItemCount(): Int = searchList.size
 }
