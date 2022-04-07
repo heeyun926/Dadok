@@ -43,7 +43,7 @@
         app:layout_constraintTop_toTopOf="@+id/view2" />
 
     <EditText
-        android:id="@+id/search_book"
+        android:id="@+id/search_edit_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -51,6 +51,8 @@
         android:textColor="@color/black"
         android:textSize="16sp"
         android:textStyle="normal"
+        android:imeOptions="actionSearch"
+        android:inputType="text"
         app:layout_constraintBottom_toBottomOf="@+id/view2"
         app:layout_constraintStart_toEndOf="@+id/imageView3"
         app:layout_constraintTop_toTopOf="@+id/view2" />

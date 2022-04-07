@@ -14,7 +14,7 @@ class BookAdapter(private val itemCLickedListener: (Book)->Unit)
     : ListAdapter<Book, BookAdapter.Holder>(diffUtil){
 
     //View Binding(item_recycler_search_result
-    inner class Holder(val binding: ItemReycyclerSearchResultBinding):
+    inner class Holder(private val binding: ItemReycyclerSearchResultBinding):
     RecyclerView.ViewHolder(binding.root){
         fun bind(data: Book){
             binding.title.text = data.title
@@ -31,12 +31,12 @@ class BookAdapter(private val itemCLickedListener: (Book)->Unit)
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookAdapter.Holder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         val binding = ItemReycyclerSearchResultBinding.inflate(LayoutInflater.from(parent.context),parent,false)
         return Holder(binding)
     }
 
-    override fun onBindViewHolder(holder: BookAdapter.Holder, position: Int) {
+    override fun onBindViewHolder(holder: Holder, position: Int) {
         holder.bind(currentList[position])
 
     }
