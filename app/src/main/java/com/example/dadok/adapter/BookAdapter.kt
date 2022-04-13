@@ -13,7 +13,7 @@ import com.example.dadok.databinding.ItemReycyclerSearchResultBinding
 class BookAdapter(private val itemCLickedListener: (Book)->Unit)
     : ListAdapter<Book, BookAdapter.Holder>(diffUtil){
 
-    //View Binding(item_recycler_search_result
+    //View Bindinㅁg(item_recycler_search_result
     inner class Holder(private val binding: ItemReycyclerSearchResultBinding):
     RecyclerView.ViewHolder(binding.root){
         fun bind(data: Book){
@@ -32,24 +32,28 @@ class BookAdapter(private val itemCLickedListener: (Book)->Unit)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
-        val binding = ItemReycyclerSearchResultBinding.inflate(LayoutInflater.from(parent.context),parent,false)
-        return Holder(binding)
+        return Holder(ItemReycyclerSearchResultBinding.inflate(
+            LayoutInflater.from(parent.context),
+            parent,
+            false
+        ))
     }
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
         holder.bind(currentList[position])
-
     }
+
+
     //DiffUtil 알아보기
     companion object{
         //같은 값 제어
         val diffUtil = object: DiffUtil.ItemCallback<Book>() {
             override fun areItemsTheSame(oldItem: Book, newItem: Book): Boolean {
-                return oldItem == newItem
+                return oldItem.id == newItem.id
             }
 
             override fun areContentsTheSame(oldItem: Book, newItem: Book): Boolean {
-                return oldItem.id == newItem.id
+                return oldItem == newItem
             }
         }
     }

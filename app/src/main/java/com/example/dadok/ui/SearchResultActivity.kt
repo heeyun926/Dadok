@@ -63,11 +63,8 @@ class SearchResultActivity : AppCompatActivity() {
                 response: Response<SearchBook>
 
             ) {
-                //함수 공간
-                Toast.makeText(applicationContext, "Success", Toast.LENGTH_SHORT).show()
-                // 새 리스트로 갱신
-               bookAdapter.submitList(response.body()?.books.orEmpty())
-
+                bookAdapter.submitList(response.body()?.books.orEmpty()) // 새 리스트로 갱신
+                Log.d("books","${response.body()?.books?.size}")
             }
             //실패
             override fun onFailure(call: Call<SearchBook>, t: Throwable) {
@@ -83,6 +80,7 @@ class SearchResultActivity : AppCompatActivity() {
             //엔터 눌렀을 경우(눌렀거나, 떼었을 때 -> 눌렀을 떄 발생하도록.)
             if(keyCode == KeyEvent.KEYCODE_ENTER && event.action == MotionEvent.ACTION_DOWN) {
                 bookServiceSearchBook(binding.searchEditText.text.toString())
+
                 return@setOnKeyListener true
             }
             return@setOnKeyListener false
@@ -98,8 +96,9 @@ class SearchResultActivity : AppCompatActivity() {
             startActivity(intent)
         })
 
-        binding.searchResultRecycler.layoutManager = LinearLayoutManager(this)
+        binding.searchResultRecycler.layoutManager = LinearLayoutManager(this,LinearLayoutManager.VERTICAL, false)
         binding.searchResultRecycler.adapter = bookAdapter
+
     }
 
 
