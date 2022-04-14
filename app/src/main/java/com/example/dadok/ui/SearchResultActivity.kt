@@ -7,7 +7,10 @@ import android.os.Bundle
 import android.util.Log
 import android.view.KeyEvent
 import android.view.MotionEvent
+import android.view.View
 import android.widget.Toast
+import androidx.core.view.isInvisible
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.dadok.R
 import com.example.dadok.adapter.BookAdapter
@@ -26,7 +29,6 @@ class SearchResultActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySearchResultBinding
     private lateinit var bookAdapter: BookAdapter
     private lateinit var book: Book
-    private lateinit var books: SearchBook
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,6 +50,9 @@ class SearchResultActivity : AppCompatActivity() {
             .build()
 
         bookApi = retrofit.create(BookAPI::class.java)
+        binding.searchEditText.requestFocus()
+        binding.totalResult.visibility = View.INVISIBLE
+        binding.totalResult2.visibility = View.INVISIBLE
     }
 
     private fun bookServiceSearchBook(keyword: String) {
@@ -65,11 +70,13 @@ class SearchResultActivity : AppCompatActivity() {
             ) {
                 bookAdapter.submitList(response.body()?.books.orEmpty()) // 새 리스트로 갱신
                 Log.d("books","${response.body()?.books?.size}")
-                fun count(data: Book){
-                    binding.totalResult.text = data.result.toString()
+                fun count(data: Int?){
+                    binding.totalResult.text = data.toString()
                 }
-                count(book)
-
+                val num = response.body()?.books?.size
+                count(num)
+                binding.totalResult.visibility = View.VISIBLE
+                binding.totalResult2.visibility = View.VISIBLE
 
             }
             //실패
@@ -86,6 +93,7 @@ class SearchResultActivity : AppCompatActivity() {
             //엔터 눌렀을 경우(눌렀거나, 떼었을 때 -> 눌렀을 떄 발생하도록.)
             if(keyCode == KeyEvent.KEYCODE_ENTER && event.action == MotionEvent.ACTION_DOWN) {
                 bookServiceSearchBook(binding.searchEditText.text.toString())
+
 
                 return@setOnKeyListener true
             }

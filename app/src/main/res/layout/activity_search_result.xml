@@ -53,12 +53,15 @@
             android:focusableInTouchMode="true"
             android:imeOptions="actionSearch"
             android:inputType="text"
+            android:background="@null"
+            android:hint="도서명 검색"
             android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="normal"
             app:layout_constraintBottom_toBottomOf="@+id/view2"
             app:layout_constraintStart_toEndOf="@+id/imageView3"
-            app:layout_constraintTop_toTopOf="@+id/view2" />
+            app:layout_constraintTop_toTopOf="@+id/view2"
+            />
 
         <TextView
             android:id="@+id/totalResult"
@@ -72,6 +75,19 @@
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/view2" />
+
+    <TextView
+        android:id="@+id/totalResult2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="3dp"
+        android:text="개의 검색 결과"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/totalResult"
+        app:layout_constraintTop_toBottomOf="@+id/view2" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/searchResultRecycler"

@@ -19,6 +19,7 @@
         tools:ignore="UnusedAttribute">
         <activity
             android:name=".ui.SearchResultActivity"
+            android:windowSoftInputMode="stateVisible"
             android:exported="false" />
         <activity
             android:name=".ui.NickActivity"
