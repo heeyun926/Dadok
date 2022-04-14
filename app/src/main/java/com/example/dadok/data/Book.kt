@@ -10,6 +10,7 @@ data class Book(
     @SerializedName("title") val title: String = "",
     @SerializedName("author") val author: String = "",
     @SerializedName("publisher") val publisher: String = "",
+    @SerializedName("totalResults") val result: Int = 0,
     //img
     @SerializedName("coverSmallUrl") val coverSmallUrl: String = "",
     @SerializedName("coverLargeUrl") val coverLargeUrl: String = "",

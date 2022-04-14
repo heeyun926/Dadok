@@ -13,7 +13,7 @@ import com.example.dadok.databinding.ItemReycyclerSearchResultBinding
 class BookAdapter(private val itemCLickedListener: (Book)->Unit)
     : ListAdapter<Book, BookAdapter.Holder>(diffUtil){
 
-    //View Bindinㅁg(item_recycler_search_result
+    //View Binding(item_recycler_search_result
     inner class Holder(private val binding: ItemReycyclerSearchResultBinding):
     RecyclerView.ViewHolder(binding.root){
         fun bind(data: Book){

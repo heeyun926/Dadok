@@ -13,7 +13,7 @@ interface BookAPI {
     fun getBooksByName(
         @Query("key") apikey: String,
         @Query("query") keyWord: String,
-        @Query("maxResults") result: Int = 30,
+        @Query("maxResults") result: Int = 30
         //Query 추가할 것 생각해보기 사용성 기준으로!
     ): Call<SearchBook>
 }

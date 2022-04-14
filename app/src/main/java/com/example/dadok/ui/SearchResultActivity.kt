@@ -1,19 +1,18 @@
 package com.example.dadok.ui
 
 import android.annotation.SuppressLint
-import android.content.ContentValues.TAG
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.KeyEvent
 import android.view.MotionEvent
-import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.dadok.R
 import com.example.dadok.adapter.BookAdapter
 import com.example.dadok.api.BookAPI
+import com.example.dadok.data.Book
 import com.example.dadok.data.SearchBook
 import com.example.dadok.databinding.ActivitySearchResultBinding
 import retrofit2.Call
@@ -26,6 +25,8 @@ class SearchResultActivity : AppCompatActivity() {
     private lateinit var bookApi: BookAPI
     private lateinit var binding: ActivitySearchResultBinding
     private lateinit var bookAdapter: BookAdapter
+    private lateinit var book: Book
+    private lateinit var books: SearchBook
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,7 +37,6 @@ class SearchResultActivity : AppCompatActivity() {
 
         initBookService()
         initSearchEditText()
-
 
     }
 
@@ -65,6 +65,12 @@ class SearchResultActivity : AppCompatActivity() {
             ) {
                 bookAdapter.submitList(response.body()?.books.orEmpty()) // 새 리스트로 갱신
                 Log.d("books","${response.body()?.books?.size}")
+                fun count(data: Book){
+                    binding.totalResult.text = data.result.toString()
+                }
+                count(book)
+
+
             }
             //실패
             override fun onFailure(call: Call<SearchBook>, t: Throwable) {
@@ -100,6 +106,7 @@ class SearchResultActivity : AppCompatActivity() {
         binding.searchResultRecycler.adapter = bookAdapter
 
     }
+
 
 
     companion object {
