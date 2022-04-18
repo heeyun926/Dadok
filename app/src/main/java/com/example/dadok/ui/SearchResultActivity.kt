@@ -105,13 +105,14 @@ class SearchResultActivity : AppCompatActivity() {
     private fun initBookRecyclerView() {
         bookAdapter = BookAdapter(itemCLickedListener =  {
             val intent = Intent(this, BookDetailActivity::class.java)
-
-            intent.putExtra("data", it)
+            Log.d("bookModel","${it}")
+            intent.putExtra("bookModel", it)
             startActivity(intent)
         })
 
         binding.searchResultRecycler.layoutManager = LinearLayoutManager(this,LinearLayoutManager.VERTICAL, false)
         binding.searchResultRecycler.adapter = bookAdapter
+
 
     }
 

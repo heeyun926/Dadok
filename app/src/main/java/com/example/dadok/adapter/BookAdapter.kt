@@ -26,8 +26,9 @@ class BookAdapter(private val itemCLickedListener: (Book)->Unit)
             }
             Glide
                 .with(binding.bookImg.context)
-                .load(data.coverSmallUrl)
+                .load(data.coverLargeUrl)
                 .into(binding.bookImg)
+            binding.bookImg.clipToOutline = true
         }
     }
 

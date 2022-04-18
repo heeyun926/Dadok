@@ -17,5 +17,6 @@ data class Book(
     //In Detail
     @SerializedName("description") val description: String = "",
     @SerializedName("categoryName") val categoryName: String = "",
-    @SerializedName("priceSales") val priceSales: Long = 0
+    @SerializedName("priceSales") val priceSales: Long = 0,
+    @SerializedName("link") val link: String = ""
 ): Parcelable

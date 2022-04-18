@@ -19,7 +19,8 @@
         android:layout_width="65dp"
         android:layout_height="86dp"
         android:layout_marginStart="10dp"
-        android:src="@drawable/search_bar"
+        android:scaleType="centerCrop"
+        android:background="@drawable/search_bar"
         app:layout_constraintBottom_toBottomOf="@+id/imageView9"
         app:layout_constraintStart_toStartOf="@+id/imageView9"
         app:layout_constraintTop_toTopOf="parent" />
