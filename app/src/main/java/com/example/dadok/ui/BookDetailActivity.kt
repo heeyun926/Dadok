@@ -22,23 +22,30 @@ class BookDetailActivity : AppCompatActivity(), Serializable {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        book = intent.getParcelableExtra("bookModel")
+        //img rounding
+        binding.mainImg.clipToOutline = true
 
+        initItem()
+        clickLink()
+    }
+
+    private fun initItem() {
+        book = intent.getParcelableExtra("bookModel")
 
         Glide.with(binding.mainImg.context)
             .load(book?.coverLargeUrl).into(binding.mainImg)
 
-        binding.title.text = book?.title
-        binding.author.text = book?.author
-        binding.publisher.text = book?.publisher
-        binding.category.text = book?.categoryName
-        binding.sales.text = book?.priceSales.toString()
-        binding.description.text = book?.description
-        binding.title.text = book?.title
+        with(binding){
+            title.text = book?.title
+            author.text = book?.author
+            publisher.text = book?.publisher
+            category.text = book?.categoryName
+            sales.text = book?.priceSales.toString()
+            description.text = book?.description
+        }
+    }
 
-
-        //img rounding
-        binding.mainImg.clipToOutline = true
+    private fun clickLink() {
         //link text
         binding.linkText.setOnClickListener {
             val openUrl = Intent(android.content.Intent.ACTION_VIEW)
@@ -48,5 +55,12 @@ class BookDetailActivity : AppCompatActivity(), Serializable {
             startActivity(openUrl)
         }
     }
+
+    fun clickSave() {
+        binding.saveBtn.setOnClickListener {
+
+        }
+    }
+
 }
 

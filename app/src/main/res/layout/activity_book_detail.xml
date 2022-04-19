@@ -300,7 +300,7 @@
 
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/save_btn"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/primary"
