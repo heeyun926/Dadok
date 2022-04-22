@@ -1,9 +1,10 @@
 package com.example.dadok.model
 
 import androidx.annotation.WorkerThread
+import kotlinx.coroutines.flow.Flow
 
 class BookRepositoryImpl(private val bookDao: BookDao) {
-    val allBook = bookDao.getAll()
+    val allBooks: Flow<List<SaveBook>> = bookDao.getAll()
 
     @WorkerThread
     fun insertBook(saveBook: SaveBook){
