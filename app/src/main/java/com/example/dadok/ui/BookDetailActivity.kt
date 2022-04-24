@@ -5,9 +5,7 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.ImageView
 import com.bumptech.glide.Glide
-import com.example.dadok.R
 import com.example.dadok.data.Book
 import com.example.dadok.databinding.ActivityBookDetailBinding
 import java.io.Serializable

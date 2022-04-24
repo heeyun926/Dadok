@@ -9,6 +9,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.dadok.data.Book
 import com.example.dadok.databinding.ItemViewpagerBooklistBinding
+import com.example.dadok.model.SaveBook
 
-class SaveBookAdapter{
+class SaveBookAdapter(): ListAdapter<SaveBook, SaveBookAdapter.Holder>(diffUtil){
+
+    inner class Holder(private val binding: ItemViewpagerBooklistBinding):
+            RecyclerView.ViewHolder(binding.root){
+                fun bind(data: SaveBook){
+
+                }
+            }
 }
