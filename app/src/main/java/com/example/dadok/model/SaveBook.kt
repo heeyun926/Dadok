@@ -10,6 +10,7 @@ data class SaveBook(
     @ColumnInfo(name = "TITLE") val title: String = "",
     @ColumnInfo(name = "AUTHOR") val author: String = "",
     @ColumnInfo(name = "IMAGE") val img: Int = 0,
+    @ColumnInfo(name = "IMAGE") val subImg: Int = 0,
     @ColumnInfo(name = "BOOK_STATUS") val bookStatus: BookStatus = BookStatus.NULL
 ) {
     enum class BookStatus {
